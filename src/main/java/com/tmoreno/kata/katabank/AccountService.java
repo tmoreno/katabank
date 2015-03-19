@@ -11,6 +11,8 @@ public class AccountService {
 
 	private Console console;
 
+	private int balance;
+
 	private List<String> operations;
 
 	public AccountService(DepositService depositService,
@@ -26,7 +28,9 @@ public class AccountService {
 	public void deposit(int amount) {
 		depositService.deposit(amount);
 
-		operations.add("01/04/2014 | " + amount + " | 1000");
+		balance += amount;
+
+		operations.add("01/04/2014 | " + amount + " | " + balance);
 	}
 
 	public void withdraw(int amount) {
