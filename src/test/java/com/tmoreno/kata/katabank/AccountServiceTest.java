@@ -63,4 +63,15 @@ public class AccountServiceTest {
 		verify(console).printLine("DATE | AMOUNT | BALANCE");
 		verify(console).printLine("01/04/2014 | 1000 | 1000");
 	}
+
+	@Test
+	public void printWithdrawTransaction() {
+		when(date.getDate()).thenReturn("01/04/2014");
+
+		accountService.withdraw(100);
+		accountService.printStatement();
+
+		verify(console).printLine("DATE | AMOUNT | BALANCE");
+		verify(console).printLine("01/04/2014 | -100 | -100");
+	}
 }
