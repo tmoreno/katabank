@@ -2,6 +2,7 @@ package com.tmoreno.kata.katabank;
 
 import static org.mockito.Mockito.verify;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -19,11 +20,16 @@ public class AccountServiceTest {
 	@Mock
 	private Console console;
 
+	private AccountService accountService;
+
+	@Before
+	public void setUp() {
+		accountService = new AccountService(depositService, withdrawService,
+				console);
+	}
+
 	@Test
 	public void shouldCallDeposit() {
-		AccountService accountService = new AccountService(depositService,
-				withdrawService, console);
-
 		accountService.deposit(1000);
 
 		verify(depositService).deposit(1000);
@@ -31,9 +37,6 @@ public class AccountServiceTest {
 
 	@Test
 	public void shouldCallWithdraw() {
-		AccountService accountService = new AccountService(depositService,
-				withdrawService, console);
-
 		accountService.withdraw(100);
 
 		verify(withdrawService).withdraw(100);
@@ -41,9 +44,6 @@ public class AccountServiceTest {
 
 	@Test
 	public void shouldCallConsole() {
-		AccountService accountService = new AccountService(depositService,
-				withdrawService, console);
-
 		accountService.printStatement();
 
 		verify(console).printLine("DATE | AMOUNT | BALANCE");
