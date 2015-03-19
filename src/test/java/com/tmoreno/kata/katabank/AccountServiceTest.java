@@ -16,6 +16,9 @@ public class AccountServiceTest {
 	@Mock
 	private WithdrawService withdrawService;
 
+	@Mock
+	private Console console;
+
 	@Test
 	public void shouldCallDeposit() {
 		AccountService accountService = new AccountService(depositService,
@@ -34,5 +37,15 @@ public class AccountServiceTest {
 		accountService.withdraw(100);
 
 		verify(withdrawService).withdraw(100);
+	}
+
+	@Test
+	public void shouldCallConsole() {
+		AccountService accountService = new AccountService(depositService,
+				withdrawService);
+
+		accountService.printStatement();
+
+		verify(console).printLine("DATE | AMOUNT | BALANCE");
 	}
 }
