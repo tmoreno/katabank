@@ -8,7 +8,7 @@ public class AccountServiceTest {
 	@Test
 	public void shouldCallDeposit() {
 		DepositService depositService = Mockito.mock(DepositService.class);
-		AccountService accountService = new AccountService();
+		AccountService accountService = new AccountService(depositService);
 
 		accountService.deposit(1000);
 

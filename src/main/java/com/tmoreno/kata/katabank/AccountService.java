@@ -2,8 +2,14 @@ package com.tmoreno.kata.katabank;
 
 public class AccountService {
 
-	public void deposit(int amount) {
+	private DepositService depositService;
 
+	public AccountService(DepositService depositService) {
+		this.depositService = depositService;
+	}
+
+	public void deposit(int amount) {
+		depositService.deposit(amount);
 	}
 
 	public void withdraw(int amount) {
