@@ -1,9 +1,11 @@
 package com.tmoreno.kata.katabank;
 
+import org.junit.Test;
 import org.mockito.Mockito;
 
 public class AccountServiceTest {
 
+	@Test
 	public void shouldCallDeposit() {
 		DepositService depositService = Mockito.mock(DepositService.class);
 		AccountService accountService = new AccountService();
