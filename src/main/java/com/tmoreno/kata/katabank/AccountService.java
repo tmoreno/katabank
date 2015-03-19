@@ -9,6 +9,8 @@ public class AccountService {
 
 	private WithdrawService withdrawService;
 
+	private Date date;
+
 	private Console console;
 
 	private int balance;
@@ -16,10 +18,11 @@ public class AccountService {
 	private List<String> operations;
 
 	public AccountService(DepositService depositService,
-			WithdrawService withdrawService, Console console) {
+			WithdrawService withdrawService, Date date, Console console) {
 
 		this.depositService = depositService;
 		this.withdrawService = withdrawService;
+		this.date = date;
 		this.console = console;
 
 		operations = new ArrayList<>();
@@ -30,7 +33,7 @@ public class AccountService {
 
 		balance += amount;
 
-		operations.add("01/04/2014 | " + amount + " | " + balance);
+		operations.add(date.getDate() + " | " + amount + " | " + balance);
 	}
 
 	public void withdraw(int amount) {

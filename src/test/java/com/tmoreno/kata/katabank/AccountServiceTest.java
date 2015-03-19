@@ -1,6 +1,7 @@
 package com.tmoreno.kata.katabank;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +19,9 @@ public class AccountServiceTest {
 	private WithdrawService withdrawService;
 
 	@Mock
+	private Date date;
+
+	@Mock
 	private Console console;
 
 	private AccountService accountService;
@@ -25,7 +29,7 @@ public class AccountServiceTest {
 	@Before
 	public void setUp() {
 		accountService = new AccountService(depositService, withdrawService,
-				console);
+				date, console);
 	}
 
 	@Test
@@ -51,6 +55,8 @@ public class AccountServiceTest {
 
 	@Test
 	public void printDepositTransaction() {
+		when(date.getDate()).thenReturn("01/04/2014");
+
 		accountService.deposit(1000);
 		accountService.printStatement();
 
