@@ -48,4 +48,13 @@ public class AccountServiceTest {
 
 		verify(console).printLine("DATE | AMOUNT | BALANCE");
 	}
+
+	@Test
+	public void printDepositTransaction() {
+		accountService.deposit(1000);
+		accountService.printStatement();
+
+		verify(console).printLine("DATE | AMOUNT | BALANCE");
+		verify(console).printLine("01/04/2014 | 1000 | 1000");
+	}
 }
