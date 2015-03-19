@@ -1,17 +1,24 @@
 package com.tmoreno.kata.katabank;
 
-import org.junit.Test;
-import org.mockito.Mockito;
+import static org.mockito.Mockito.verify;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+
+@RunWith(MockitoJUnitRunner.class)
 public class AccountServiceTest {
+
+	@Mock
+	private DepositService depositService;
 
 	@Test
 	public void shouldCallDeposit() {
-		DepositService depositService = Mockito.mock(DepositService.class);
 		AccountService accountService = new AccountService(depositService);
 
 		accountService.deposit(1000);
 
-		Mockito.verify(depositService).deposit(1000);
+		verify(depositService).deposit(1000);
 	}
 }
