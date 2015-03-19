@@ -48,8 +48,8 @@ public class AccountService {
 	public void printStatement() {
 		console.printLine("DATE | AMOUNT | BALANCE");
 
-		for (String operation : operations) {
-			console.printLine(operation);
+		for (int i = operations.size() - 1; i >= 0; i--) {
+			console.printLine(operations.get(i));
 		}
 	}
 }
