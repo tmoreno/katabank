@@ -38,6 +38,11 @@ public class AccountService {
 
 	public void withdraw(int amount) {
 		withdrawService.withdraw(amount);
+
+		balance -= amount;
+
+		operations
+				.add(date.getDate() + " | " + (amount * -1) + " | " + balance);
 	}
 
 	public void printStatement() {
