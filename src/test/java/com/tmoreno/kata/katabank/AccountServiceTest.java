@@ -22,7 +22,7 @@ public class AccountServiceTest {
 	@Test
 	public void shouldCallDeposit() {
 		AccountService accountService = new AccountService(depositService,
-				withdrawService);
+				withdrawService, console);
 
 		accountService.deposit(1000);
 
@@ -32,7 +32,7 @@ public class AccountServiceTest {
 	@Test
 	public void shouldCallWithdraw() {
 		AccountService accountService = new AccountService(depositService,
-				withdrawService);
+				withdrawService, console);
 
 		accountService.withdraw(100);
 
@@ -42,7 +42,7 @@ public class AccountServiceTest {
 	@Test
 	public void shouldCallConsole() {
 		AccountService accountService = new AccountService(depositService,
-				withdrawService);
+				withdrawService, console);
 
 		accountService.printStatement();
 

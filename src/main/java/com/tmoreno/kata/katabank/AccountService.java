@@ -6,10 +6,14 @@ public class AccountService {
 
 	private WithdrawService withdrawService;
 
+	private Console console;
+
 	public AccountService(DepositService depositService,
-			WithdrawService withdrawService) {
+			WithdrawService withdrawService, Console console) {
+
 		this.depositService = depositService;
 		this.withdrawService = withdrawService;
+		this.console = console;
 	}
 
 	public void deposit(int amount) {
@@ -21,6 +25,6 @@ public class AccountService {
 	}
 
 	public void printStatement() {
-
+		console.printLine("DATE | AMOUNT | BALANCE");
 	}
 }
