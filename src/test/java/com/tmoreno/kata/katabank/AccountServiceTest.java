@@ -13,6 +13,9 @@ public class AccountServiceTest {
 	@Mock
 	private DepositService depositService;
 
+	@Mock
+	private WithdrawService withdrawService;
+
 	@Test
 	public void shouldCallDeposit() {
 		AccountService accountService = new AccountService(depositService);
@@ -20,5 +23,14 @@ public class AccountServiceTest {
 		accountService.deposit(1000);
 
 		verify(depositService).deposit(1000);
+	}
+
+	@Test
+	public void shouldCallWithdraw() {
+		AccountService accountService = new AccountService(depositService);
+
+		accountService.withdraw(100);
+
+		verify(withdrawService).withdraw(100);
 	}
 }
