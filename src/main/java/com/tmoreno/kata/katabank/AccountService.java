@@ -4,8 +4,12 @@ public class AccountService {
 
 	private DepositService depositService;
 
-	public AccountService(DepositService depositService) {
+	private WithdrawService withdrawService;
+
+	public AccountService(DepositService depositService,
+			WithdrawService withdrawService) {
 		this.depositService = depositService;
+		this.withdrawService = withdrawService;
 	}
 
 	public void deposit(int amount) {
@@ -13,7 +17,7 @@ public class AccountService {
 	}
 
 	public void withdraw(int amount) {
-
+		withdrawService.withdraw(amount);
 	}
 
 	public void printStatement() {

@@ -18,7 +18,8 @@ public class AccountServiceTest {
 
 	@Test
 	public void shouldCallDeposit() {
-		AccountService accountService = new AccountService(depositService);
+		AccountService accountService = new AccountService(depositService,
+				withdrawService);
 
 		accountService.deposit(1000);
 
@@ -27,7 +28,8 @@ public class AccountServiceTest {
 
 	@Test
 	public void shouldCallWithdraw() {
-		AccountService accountService = new AccountService(depositService);
+		AccountService accountService = new AccountService(depositService,
+				withdrawService);
 
 		accountService.withdraw(100);
 
