@@ -74,4 +74,23 @@ public class AccountServiceTest {
 		verify(console).printLine("DATE | AMOUNT | BALANCE");
 		verify(console).printLine("01/04/2014 | -100 | -100");
 	}
+
+	@Test
+	public void should_print_statement_containing_all_transactions() {
+		when(date.getDate()).thenReturn("01/04/2014");
+		accountService.deposit(1000);
+
+		when(date.getDate()).thenReturn("02/04/2014");
+		accountService.withdraw(100);
+
+		when(date.getDate()).thenReturn("10/04/2014");
+		accountService.deposit(500);
+
+		accountService.printStatement();
+
+		verify(console).printLine("DATE | AMOUNT | BALANCE");
+		verify(console).printLine("10/04/2014 | 500 | 1400");
+		verify(console).printLine("02/04/2014 | -100 | 900");
+		verify(console).printLine("01/04/2014 | 1000 | 1000");
+	}
 }
